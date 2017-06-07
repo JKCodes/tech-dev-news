@@ -1,2 +1,4 @@
-require_relative "./tech_dev_news/version"
-require_relative "./tech_dev_news/cli"
+require 'open-uri'
+require 'require_all'
+
+require_all './lib'
