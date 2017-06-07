@@ -1,8 +1,6 @@
 # TechDevNews
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/tech_dev_news`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+Welcome to TechDevNews! This CLI gem will collect twenty latest news articles from a website.  Users can then select a specific news article to read a short synopsis of the article, and if the article is interesting, then the users can opt to open up the rest of the article in their web browser to read the rest of the article.  
 
 ## Installation
 
@@ -19,10 +17,6 @@ And then execute:
 Or install it yourself as:
 
     $ gem install tech_dev_news
-
-## Usage
-
-TODO: Write usage instructions here
 
 ## Development
 
