@@ -1,5 +1,2 @@
-require "tech_dev_news/version"
-
-module TechDevNews
-  # Your code goes here...
-end
+require_relative "./tech_dev_news/version"
+require_relative "./tech_dev_news/cli"
