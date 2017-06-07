@@ -1,4 +1,3 @@
-require 'pry'
 class TechDevNewsScraper
   attr_reader :base_url, :doc
 
@@ -9,16 +8,17 @@ class TechDevNewsScraper
 
   def scrape
     # hash for array of hash for now
-    self.doc.css('.news article').map do |article|
-      article_meta_list = article.css('.meta_list h4').text.split(',')
+    self.doc.css('.news article').map do |news_article|
+      news_meta_list = news_article.css('.meta_list h4').text.split(',')
 
-      hasher = {
-        title: article.css('a h2').text,
-        author: article_meta_list[0][4..-1],
-        date: article_meta_list[1][1..-1],
-        synopsis: article.css('.summary').text,
-        details_url: "#{self.base_url}" + article.css('a').attribute('href').value
-      }
+      news =  News.new
+      news.title = news_article.css('a h2').text
+      news.author = news_meta_list[0][4..-1]
+      news.date = news_meta_list[1][1..-1]
+      news.synopsis = news_article.css('.summary').text
+      news.details_url = "#{self.base_url}" + news_article.css('a').attribute('href').value
+
+      news
     end
   end
 end
