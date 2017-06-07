@@ -42,23 +42,38 @@ class TechDevNews::CLI
       while choice != "exit"
         puts ""
         puts "***Menu***"
-        puts "list - see the list again"
-        puts "1 ~ #{@news_articles.size} - see more details about a specific news"
-        puts "exit - exit the app"
+        puts "list".bold + " - see the list again"
+        puts "1 ~ #{@news_articles.size}".bold + " - see more details about a specific news"
+        puts "exit".bold + " - exit the app"
 
         choice = gets.strip.downcase
         clear_screen
 
         if choice.to_i > 0 && choice.to_i <= @news_articles.size
-          puts "#{@news_articles[choice.to_i - 1]}'s detail goes here"
+          news_detail(choice.to_i - 1)
         elsif choice == "list"
           list_news
         elsif choice == 'exit'
           goodbye          
         else
-          puts "'#{choice}' is not a valid selection.  Please try again."
+          puts "'#{choice}' is not a valid selection.  Please try again.".red
         end
       end
+    end
+
+    def news_detail(index)
+      puts "Your requested article has the following details:\n\n"
+      puts "Title: #{@news_articles[index].title}"
+      puts "Author: #{@news_articles[index].author}"
+      puts "Published Date: #{@news_articles[index].date}"
+      puts "Short summary:\n#{@news_articles[index].synopsis}\n\n"
+
+      puts "Would you like to read more? (y/n)"
+      puts "  NOTE: this will open in your web browser".red
+      choice = gets.strip.downcase
+
+      system("open #{@news_articles[index].details_url}") if choice == 'y'
+      clear_screen
     end
 
     def goodbye
