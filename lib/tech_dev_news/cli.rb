@@ -32,7 +32,7 @@ class TechDevNews::CLI
     def list_news
       puts "Here are today's list of Tech Developer News"
       @news_articles.each.with_index(1) do |article, i|
-        puts "#{i}. #{article}"
+        puts "#{i}. #{article.to_s}"
       end
     end
 
