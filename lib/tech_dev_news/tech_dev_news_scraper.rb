@@ -6,6 +6,6 @@ class TechDevNewsScraper
   end
 
   def basic_scrape
-
+    ["Fake article", "Another fake article", "Yet another fake article"]
   end
 end

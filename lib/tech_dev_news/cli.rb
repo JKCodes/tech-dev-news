@@ -1,5 +1,13 @@
 class TechDevNews::CLI
 
+  def initialize
+    clear_screen
+    puts ""
+    puts "loading initial setup..."
+    puts ""
+    @news_articles = TechDevNewsScraper.new.basic_scrape
+  end
+
   def call
     greetings
     list_news
@@ -23,9 +31,9 @@ class TechDevNews::CLI
 
     def list_news
       puts "Here are today's list of Tech Developer News"
-      # putting in a fake list for now to test the app
-      puts "1. What you need to know about iOS 12 - Ryan Daws - 06 June 2017"
-      puts "2. Apple developers break $90 billion earnings as Swift Playgrounds expands to educate the next generation - Ryan Daws - 02 June 2017"
+      @news_articles.each.with_index(1) do |article, i|
+        puts "#{i}. #{article}"
+      end
     end
 
     def menu
@@ -41,8 +49,8 @@ class TechDevNews::CLI
         choice = gets.strip.downcase
         clear_screen
 
-        if choice.to_i > 0 && choice.to_i < 3
-          puts "Deal ##{choice.to_i}'s information goes here"
+        if choice.to_i > 0 && choice.to_i <= @news_articles.size
+          puts "#{@news_articles[choice.to_i - 1]}'s detail goes here"
         elsif choice == "list"
           list_news
         elsif choice == 'exit'
@@ -57,11 +65,3 @@ class TechDevNews::CLI
       puts "Thank you for using this app.  See you next time!"
     end
 end
-
-
-
-
-
-
-
-
