@@ -46,11 +46,15 @@ class TechDevNews::CLI
         elsif choice == "list"
           list_news
         elsif choice == 'exit'
-          puts ""
+          goodbye          
         else
           puts "'#{choice}' is not a valid selection.  Please try again."
         end
       end
+    end
+
+    def goodbye
+      puts "Thank you for using this app.  See you next time!"
     end
 end
 
