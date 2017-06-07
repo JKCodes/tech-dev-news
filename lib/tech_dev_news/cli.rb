@@ -5,7 +5,7 @@ class TechDevNews::CLI
     puts ""
     puts "loading initial setup..."
     puts ""
-    @news_articles = TechDevNewsScraper.new.basic_scrape
+    @news_articles = TechDevNewsScraper.new.scrape
   end
 
   def call
@@ -43,7 +43,7 @@ class TechDevNews::CLI
         puts ""
         puts "***Menu***"
         puts "list - see the list again"
-        puts "1 ~ 2 - see more details about a specific news"
+        puts "1 ~ #{@news_articles.size} - see more details about a specific news"
         puts "exit - exit the app"
 
         choice = gets.strip.downcase
